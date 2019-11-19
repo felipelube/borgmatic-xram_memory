@@ -1,4 +1,4 @@
-FROM alpine:latest as builder
+FROM alpine:3.10 as builder
 MAINTAINER b3vis
 ARG BORG_VERSION=1.1.10
 ARG BORGMATIC_VERSION=1.4.0
@@ -17,7 +17,7 @@ RUN apk upgrade --no-cache \
     && pip3 install --upgrade borgmatic==${BORGMATIC_VERSION} \
     && pip3 install llfuse
 
-FROM alpine:latest
+FROM alpine:3.10
 MAINTAINER b3vis
 COPY entry.sh /entry.sh
 RUN apk upgrade --no-cache \
